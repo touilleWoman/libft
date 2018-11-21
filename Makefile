@@ -1,17 +1,17 @@
+.PHONY: all clean fclean re
 
 SOURCE = ft_memset.c \
 main.c\
-libft.h \
 
-all:
-	gcc -Wall -Werror -Wextra $(SOURCE)
+NAME = ft_memset
+
+all: $(SOURCE)
+	gcc -Wall -Werror -Wextra $(SOURCE) -o $(NAME)
 
 clean:
 
 fclean:
-	rm -f a.out
+	rm -f $(NAME)
 
 re:
 	fclean all
-
-.PHONY: all clean fclean re
