@@ -1,36 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft.c                                               :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jleblond <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/14 13:23:51 by jleblond          #+#    #+#             */
-/*   Updated: 2018/11/14 13:23:55 by jleblond         ###   ########.fr       */
+/*   Created: 2018/11/21 17:32:02 by jleblond          #+#    #+#             */
+/*   Updated: 2018/11/21 17:32:03 by jleblond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <string.h>
 
-char	*ft_strdup(char *src)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	int		i;
-	char	*dup;
+	char	*ptr;
+	size_t	i;
 
 	i = 0;
-	while (src[i] != '\0')
+	ptr = NULL;
+	while (i < len)
 	{
+		ptr[i] = ((char*)src)[i];
 		i++;
 	}
-	dup = (char *)malloc((i + 1) * sizeof(char));
-	if (dup == NULL)
-		return (0);
 	i = 0;
-	while (src[i] != '\0')
+	while (i < len)
 	{
-		dup[i] = src[i];
+		((char*)dst)[i] = ptr[i];
 		i++;
 	}
-	dup[i] = '\0';
-	return (dup);
+	return (dst);
 }

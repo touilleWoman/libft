@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft.c                                               :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jleblond <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/14 13:23:51 by jleblond          #+#    #+#             */
-/*   Updated: 2018/11/14 13:23:55 by jleblond         ###   ########.fr       */
+/*   Created: 2018/11/21 19:27:31 by jleblond          #+#    #+#             */
+/*   Updated: 2018/11/21 19:27:33 by jleblond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <string.h>
 
-char	*ft_strdup(char *src)
+char	*ft_strncpy(char *dst, const char *src, size_t len)
 {
-	int		i;
-	char	*dup;
+	size_t	i;
 
 	i = 0;
-	while (src[i] != '\0')
+	while ((i < n)&&(src[i] != 0))
 	{
-		i++;
+		dst[i] = src[i];
 	}
-	dup = (char *)malloc((i + 1) * sizeof(char));
-	if (dup == NULL)
-		return (0);
-	i = 0;
-	while (src[i] != '\0')
+	if (i < n - 1)
 	{
-		dup[i] = src[i];
-		i++;
+		dst[n] = 0;
 	}
-	dup[i] = '\0';
-	return (dup);
+
 }
