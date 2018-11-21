@@ -12,7 +12,7 @@
 
 #include <string.h>
 
-char	*ft_strncpy(char *dst, const char *src, size_t len)
+char	*ft_strncpy(char *dst, const char *src, size_t n)
 {
 	size_t	i;
 
@@ -20,10 +20,10 @@ char	*ft_strncpy(char *dst, const char *src, size_t len)
 	while ((i < n)&&(src[i] != 0))
 	{
 		dst[i] = src[i];
+		i++;
 	}
 	if (i < n - 1)
 	{
 		dst[n] = 0;
 	}
-
 }

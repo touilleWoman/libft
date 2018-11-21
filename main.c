@@ -20,7 +20,6 @@ int main()
 /*
 int main()
 {
-	// char *str = "Je suis une pomme."; Pourquoi cela ne marche pas???
 	char str[] = "Je suis une pomme.";
 	printf("\nBefore ft_bzero(): %s---\n", str);
 
@@ -53,18 +52,19 @@ int		main()
 /*
 int		main()
 {
-	char src[] = "Je suisabbbb .";
-	char dst[] = "Il est une pomme";
+	char src[] = "Jesuisabbbb .";
+	char dst[] = "Ilestunepomme";
 	char *new;
-	printf("befor source string is %s\n", src);
-	printf("befor destination string is %s\n", dst);
+	printf("befor source string ==%s\n", src);
+	printf("befor destination string ==%s\n", dst);
 
-	new = memccpy(dst, src, 'a', 10);
-	printf("new == %s\n", new);
+	new = ft_memccpy(dst, src, '?', 10);
+	printf("new==%s\n", new);
+	printf("after dst==%s\n",dst);
 	return 0;
 }
 */
-
+/*
 // ft_memmove
 int main () {
    char dest[] = "JeSuisUnePomme";
@@ -76,3 +76,4 @@ int main () {
 
    return(0);
 }
+*/
