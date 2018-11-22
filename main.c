@@ -160,17 +160,51 @@ int main()
 */
 
 //ft_strlcat.c
-/*
+size_t strlcat3(char * dst, const char * src, size_t maxlen) {
+    const size_t srclen = strlen(src);
+    const size_t dstlen = strnlen(dst, maxlen);
+    if (dstlen == maxlen) return maxlen+srclen;
+    if (srclen < maxlen-dstlen) {
+        memcpy(dst+dstlen, src, srclen+1);
+    } else {
+        memcpy(dst+dstlen, src, maxlen-1);
+        dst[dstlen+maxlen-1] = '\0';
+    }
+    return dstlen + srclen;
+}
+	
 int main()
 {
-	char const src[] = "12345";
-	char dst[] = "abc";
-	size_t x = strlcat(dst, src, 4);
-	printf("dst==%s\n", dst);
-	printf("x==%zu\n", x);
+	// char const src[] = "12345";
+	// char dst[8] = "abc";
+	// size_t x = strlcat(dst, src, sizeof(dst));
+	// printf("dst==%s\n", dst);
+	// printf("x==%zu\n", x);
+	// return 0;
+
+	char *str = "the cake is a lie !\0I'm hidden lol\r\n";
+	char buff1[0xF00] = "there is no stars in the sky";
+	char buff2[0xF00] = "there is no stars in the sky";
+	size_t max = strlen("the cake is a lie !\0I'm hidden lol\r\n") + 4;
+	size_t r1 = strlcat3(buff1, str, max);	
+	size_t r2 = ft_strlcat(buff2, str, max);
+
+	if (r1 != r2)
+		return 2;
+	char s1[4] = "";
+	char s2[4] = "";
+	r1 = strlcat3 (s1, "thx to ntoniolo for this test !", 4)
+		;
+	r2 = ft_strlcat(s2, "thx to ntoniolo for this test !", 4)
+		;
+	if (r1 != r2)
+		return 3;
+
 	return 0;
+
+
 }
-*/
+
 
 
 
@@ -190,16 +224,16 @@ int main()
 
 //ft_strstr
 
-int main()
-{
-	char const haystack[] = "MZIRIBMZIRIBMZP";
-	char const	needle[] = "MZIRIBMZP";
+	// int main()
+	// {
+	// 	char const haystack[] = "MZIRIBMZIRIBMZP";
+	// 	char const	needle[] = "MZIRIBMZP";
 
-	char *new;
-	new = ft_strstr(haystack, needle);
-	printf("new==%s\n", new);
-	return 0;
-}
+	// 	char *new;
+	// 	new = ft_strstr(haystack, needle);
+	// 	printf("new==%s\n", new);
+	// 	return 0;
+	// }
 
 //ft_strncmp.c
 /*

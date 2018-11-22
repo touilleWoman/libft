@@ -11,14 +11,17 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	char	ptr[len + 1];
+	char	*ptr;
 	size_t	i;
 
 	i = 0;
+	ptr = (char*)malloc(len * sizeof(char)); 
 	memcpy(ptr, src, len);
 	memcpy(dst, ptr, len);
+	free(ptr);
 	return (dst);
 }

@@ -23,7 +23,9 @@ ft_putchar.c \
 ft_putstr.c \
 ft_putnbr.c \
 
-OFILE = $(SOURCE:c=o)
+HEADER = libft.h
+
+OFILE = $(SOURCE:.c=.o)
 
 NAME = libft.a
 
@@ -32,7 +34,7 @@ all: $(NAME)
 $(NAME): $(OFILE)
 	ar rcs $(NAME) $(OFILE)
 
-$(OFILE):
+$(OFILE): $(SOURCE) $(HEADER)
 	gcc -Wall -Werror -Wextra -c $(SOURCE) -I.
 
 clean:
