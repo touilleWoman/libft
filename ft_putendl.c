@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_putendl.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jleblond <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/22 18:25:50 by jleblond          #+#    #+#             */
-/*   Updated: 2018/11/22 18:31:33 by jleblond         ###   ########.fr       */
+/*   Created: 2018/11/23 18:27:36 by jleblond          #+#    #+#             */
+/*   Updated: 2018/11/23 18:27:38 by jleblond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr(char const *s)
+void	ft_putendl(char const *s)
 {
 	int		i;
 
@@ -24,5 +24,6 @@ void	ft_putstr(char const *s)
 			write(1, &s[i], 1);
 			i++;
 		}
+		write(1, "\n", 1);
 	}
 }

@@ -158,7 +158,7 @@ int main()
 	return 0;
 }
 */
-
+/*
 //ft_strlcat.c
 size_t strlcat3(char * dst, const char * src, size_t maxlen) {
     const size_t srclen = strlen(src);
@@ -172,7 +172,7 @@ size_t strlcat3(char * dst, const char * src, size_t maxlen) {
     }
     return dstlen + srclen;
 }
-	
+
 int main()
 {
 	// char const src[] = "12345";
@@ -186,7 +186,7 @@ int main()
 	char buff1[0xF00] = "there is no stars in the sky";
 	char buff2[0xF00] = "there is no stars in the sky";
 	size_t max = strlen("the cake is a lie !\0I'm hidden lol\r\n") + 4;
-	size_t r1 = strlcat3(buff1, str, max);	
+	size_t r1 = strlcat3(buff1, str, max);
 	size_t r2 = ft_strlcat(buff2, str, max);
 
 	if (r1 != r2)
@@ -201,10 +201,8 @@ int main()
 		return 3;
 
 	return 0;
-
-
 }
-
+*/
 
 
 
@@ -245,6 +243,71 @@ int main()
 	printf("%d\n", i );
 	int x = strncmp(s1, s2, 20);
 	printf("%d\n", x );
+	return 0;
+}
+*/
+
+
+//ft_atoi
+/*
+int main(int argc, char const *argv[])
+{
+	if (argc > 1)
+	{
+		printf("%d\n", (atoi(argv[1])));
+	}
+	return 0;
+}
+*/
+
+//ft_isalpha
+/*
+#include <ctype.h>
+int main(int argc, char const *argv[])
+{
+	argc = 2;
+	int c = ft_isalpha(atoi(argv[1]));
+	printf("%d\n", c );
+	return 0;
+}
+*/
+
+
+//ft_strnew
+/*
+int main()
+{
+	size_t size = 514;
+
+	char *ret = ft_strnew(size);
+	printf("%zu\n", strlen(ret));
+	return 0;
+}
+*/
+
+
+//ft_itoa
+/*
+int main()
+{
+	char *str = ft_itoa(-623);
+	printf("%s\n", str);
+	return 0;
+}
+*/
+
+
+
+
+
+
+
+
+//ft_putnbr
+/*
+int main()
+{
+	ft_putnbr(123);
 	return 0;
 }
 */
