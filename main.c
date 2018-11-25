@@ -4,6 +4,7 @@
 
 //ft_memset
 /*
+
 int main()
 {
 	char str[] = "Je suis une pomme.";
@@ -285,6 +286,44 @@ int main()
 }
 */
 
+//ft_strsub
+/*
+int main()
+{
+	char *s = "JeSuisUnePomme";
+	char *ptr = ft_strsub(s, 2, 4);
+	printf("%s\n", ptr);
+	return 0;
+}*/
+
+
+//ft_strtrim
+
+/*
+#define TRY(s) printf("'%s'=>'%s'\n",s, ft_strtrim(s));
+int		main()
+{
+	TRY("foo");
+	TRY(". foo");
+	TRY("  fo. o. ");
+}
+*/
+
+//ft_strsplit
+int		main()
+{
+	char s[] = "je*suis*une*pomme";
+	int		i = 0;
+	char c = '*';
+
+
+	char **pptr = ft_strsplit(s, c);
+	while (i < 4)
+	{
+		printf("%s\n", pptr[i]);
+		i++;
+	}
+}
 
 //ft_itoa
 /*
@@ -295,6 +334,7 @@ int main()
 	return 0;
 }
 */
+
 
 
 
