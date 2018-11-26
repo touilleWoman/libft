@@ -14,7 +14,7 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
 	unsigned int		i;
 
-	if ((s != 0) &&55 (f != 0))
+	if ((s != 0) && (f != 0))
 	{
 		i = 0;
 		while (s[i] != 0)
