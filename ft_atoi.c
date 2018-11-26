@@ -26,9 +26,7 @@ int		ft_atoi(const char *str)
 		i++;
 	}
 	if (str[i] == '+')
-	{
 		i++;
-	}
 	if (str[i] == '-')
 	{
 		neg = -neg;

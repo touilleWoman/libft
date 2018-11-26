@@ -59,16 +59,17 @@ void	ft_putnbr_fd(int n, int fd);
 
 typedef struct s_list
 	{
-		void			*content2;
+		void			*content;
 		size_t			content_size;
 		struct s_list 	*next;
-	}				t_list;
+}				t_list;
 
 t_list		*ft_lstnew(void const *content, size_t content_size);
 void	ft_lstdelone(t_list **alst, void(*del)(void*, size_t));
 void	ft_lstadd(t_list **alst, t_list *new);
 void	ft_lstiter(t_list *lst, void(*f)(t_list *elem));
 int		ft_lstlen(t_list *lst);
+t_list	*ft_lstcpy(t_list *lst);
 
 
 #endif

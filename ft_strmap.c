@@ -25,11 +25,11 @@ char	*ft_strmap(char const *s, char (*f)(char))
 		return (0);
 	}
 	i = 0;
-	while (s[i] !=0)
+	while (s[i] != 0)
 	{
 		s2[i] = (*f)(s[i]);
 		i++;
 	}
 	s2[i] = 0;
-	return(s2);
+	return (s2);
 }

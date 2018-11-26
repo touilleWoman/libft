@@ -1,13 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strsplit.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jleblond <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/11/26 12:49:21 by jleblond          #+#    #+#             */
+/*   Updated: 2018/11/26 12:49:40 by jleblond         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
-
-
-#include <stdio.h>
-
 
 static int		tell_num_of_str(char const *s, char c)
 {
 	int		i;
-	int		num_str;	
+	int		num_str;
 
 	i = 0;
 	num_str = 0;
@@ -27,8 +35,7 @@ static int		tell_num_of_str(char const *s, char c)
 	return (num_str);
 }
 
-
-static int		start(char const *s, char c,	int	index)
+static int		start(char const *s, char c, int index)
 {
 	while (s[index] != 0)
 	{
@@ -41,30 +48,21 @@ static int		start(char const *s, char c,	int	index)
 	return (0);
 }
 
-
 static int		sub_str_len(char const *s, char c, int start_point)
 {
-		int 	len;
+	int		len;
 
-		len = 0;
-		while ((s[start_point] != c) && s[start_point] != '\0')
-		{
-			len++;
-			start_point++;
-		}
-		return len;
+	len = 0;
+	while ((s[start_point] != c) && s[start_point] != '\0')
+	{
+		len++;
+		start_point++;
+	}
+	return (len);
 }
-
 
 char	**ft_strsplit(char const *s, char c)
 {
-#if 0
-	s = 0;
-	c = 3;
-	char **pptr = (char**)malloc(sizeof(char*) * 1);
-	pptr[0] = NULL;
-	return pptr;
-#else
 	char	**pptr;
 	int		num_str;
 	int		y;
@@ -73,20 +71,16 @@ char	**ft_strsplit(char const *s, char c)
 	int		x;
 
 	if (!s)
-	{
 		return (0);
-	}
 	num_str = tell_num_of_str(s, c);
 	pptr = (char**)malloc(sizeof(char*) * (num_str + 1));
 	if (pptr == 0)
-	{
 		return (0);
-	}
 	y = 0;
-	start_point = 0;	
+	start_point = 0;
 	while (y < num_str)
 	{
-		start_point = start (s, c, start_point);
+		start_point = start(s, c, start_point);
 		len = sub_str_len(s, c, start_point);
 		pptr[y] = (char*)malloc(sizeof(char) * (len + 1));
 		while (x < len)
@@ -101,5 +95,4 @@ char	**ft_strsplit(char const *s, char c)
 	}
 	pptr[y] = 0;
 	return (pptr);
-#endif
 }

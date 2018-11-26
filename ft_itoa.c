@@ -35,22 +35,13 @@ static int		lenth(long long n)
 	return (len);
 }
 
-char	*ft_itoa(int x)
+char			*ft_itoa(int x)
 {
-	int		len;
-	char	*ptr;
-	int		count;
-	int		neg;
+	int			len;
+	char		*ptr;
+	int			count;
+	int			neg;
 	long long	n;
-
-	// if (n == -2147483648) 
-	// {
-	// 	ptr = (char*)malloc(sizeof(char) * (len + 1));
-	// 	if (ptr == 0)
-	// 		return (NULL);
-	// 	strcpy(ptr, "-2147483648");
-	// 	return(ptr)
-	// }
 
 	n = x;
 	len = lenth(n);
@@ -71,7 +62,7 @@ char	*ft_itoa(int x)
 		n = n / 10;
 		count++;
 		if (n == 0)
-			break;
+			break ;
 	}
 	if (neg == 1)
 		ptr[0] = '-';
