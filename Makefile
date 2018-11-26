@@ -58,6 +58,7 @@ ft_lstdel.c \
 ft_lstadd.c \
 ft_lstiter.c \
 ft_lstcpy.c \
+ft_lstmap.c \
 
 HEADER = libft.h
 
@@ -70,7 +71,7 @@ all: $(NAME)
 $(NAME): $(OFILE)
 	ar rcs $(NAME) $(OFILE)
 
-$(OFILE): $(SOURCE) $(HEADER)
+%.o: %c $(HEADER)
 	gcc -Wall -Werror -Wextra -c $(SOURCE) -I.
 
 clean:

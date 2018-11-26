@@ -61,14 +61,28 @@ static int		sub_str_len(char const *s, char c, int start_point)
 	return (len);
 }
 
-char	**ft_strsplit(char const *s, char c)
+static int		inner_loop(char *ptr, char const *s, int len, int start_point)
+{
+	int		x;
+
+	x = 0;
+	while (x < len)
+	{
+		ptr[x] = s[start_point];
+		x++;
+		start_point++;
+	}
+	ptr[x] = '\0';
+	return (start_point);
+}
+
+char			**ft_strsplit(char const *s, char c)
 {
 	char	**pptr;
 	int		num_str;
 	int		y;
 	int		len;
 	int		start_point;
-	int		x;
 
 	if (!s)
 		return (0);
@@ -83,14 +97,7 @@ char	**ft_strsplit(char const *s, char c)
 		start_point = start(s, c, start_point);
 		len = sub_str_len(s, c, start_point);
 		pptr[y] = (char*)malloc(sizeof(char) * (len + 1));
-		while (x < len)
-		{
-			pptr[y][x] = s[start_point];
-			x++;
-			start_point++;
-		}
-		pptr[y][x] = '\0';
-		x = 0;
+		start_point = inner_loop(pptr[y], s, len, start_point);
 		y++;
 	}
 	pptr[y] = 0;

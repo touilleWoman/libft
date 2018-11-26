@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static int		lenth(long long n)
 {
@@ -35,11 +34,26 @@ static int		lenth(long long n)
 	return (len);
 }
 
+static char		*convert(long long n, int len, char *ptr)
+{
+	int			count;
+
+	count = 1;
+	while (1)
+	{
+		ptr[len - count] = n % 10 + '0';
+		n = n / 10;
+		count++;
+		if (n == 0)
+			break ;
+	}
+	return (ptr);
+}
+
 char			*ft_itoa(int x)
 {
 	int			len;
 	char		*ptr;
-	int			count;
 	int			neg;
 	long long	n;
 
@@ -54,16 +68,8 @@ char			*ft_itoa(int x)
 		n = -n;
 		neg = 1;
 	}
+	ptr = convert(n, len, ptr);
 	ptr[len] = '\0';
-	count = 1;
-	while (1)
-	{
-		ptr[len - count] = n % 10 + '0';
-		n = n / 10;
-		count++;
-		if (n == 0)
-			break ;
-	}
 	if (neg == 1)
 		ptr[0] = '-';
 	return (ptr);

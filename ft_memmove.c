@@ -21,8 +21,8 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	ptr = (char*)malloc(len * sizeof(char));
 	if (ptr == 0)
 		return (0);
-	memcpy(ptr, src, len);
-	memcpy(dst, ptr, len);
+	ft_memcpy(ptr, src, len);
+	ft_memcpy(dst, ptr, len);
 	free(ptr);
 	return (dst);
 }
