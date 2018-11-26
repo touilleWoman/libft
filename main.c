@@ -250,16 +250,17 @@ int main()
 
 
 //ft_atoi
-/*
+
 int main(int argc, char const *argv[])
 {
 	if (argc > 1)
 	{
-		printf("%d\n", (atoi(argv[1])));
+		printf("%i\n", (atoi(argv[1])));
+		printf("%i\n", (ft_atoi(argv[1])));
 	}
 	return 0;
 }
-*/
+
 
 //ft_isalpha
 /*
@@ -310,30 +311,33 @@ int		main()
 */
 
 //ft_strsplit
-int		main()
-{
-	char s[] = "je*suis*une*pomme";
-	int		i = 0;
-	char c = '*';
 
 
-	char **pptr = ft_strsplit(s, c);
-	while (i < 4)
-	{
-		printf("%s\n", pptr[i]);
-		i++;
-	}
-}
+
+// int		main()
+// {
+// 	char s[] = "je*suis*une*pomme";
+// 	int		i = 0;
+// 	char c = '*';
+
+
+// 	char **pptr = ft_strsplit(s, c);
+// 	while (i < 4)
+// 	{
+// 		printf("%s\n", pptr[i]);
+// 		i++;
+// 	}
+// }
 
 //ft_itoa
-/*
-int main()
-{
-	char *str = ft_itoa(-623);
-	printf("%s\n", str);
-	return 0;
-}
-*/
+
+// int main()
+// {
+// 	char *str = ft_itoa(156);
+// 	printf("%s\n", str);
+// 	return 0;
+// }
+
 
 
 

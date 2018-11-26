@@ -40,7 +40,7 @@ void	ft_strclr(char *s);
 void	ft_striter(char *s, void (*f)(char *));
 void	ft_striteri(char *s, void (*f)(unsigned int, char *));
 char	*ft_strmap(char const *s, char (*f)(char));
-
+char	*ft_strmapi(char const *s, char(*f)(unsigned int, char));
 int		ft_strequ(const char *s1, const char *s2);
 int		ft_strnequ(char const *s1, char const *s2, size_t n);
 char	*ft_strsub(char const *s, unsigned int start, size_t len);
@@ -56,6 +56,19 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char const *s, int fd);
 void	ft_putendl_fd(char const *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
+
+typedef struct s_list
+	{
+		void			*content2;
+		size_t			content_size;
+		struct s_list 	*next;
+	}				t_list;
+
+t_list		*ft_lstnew(void const *content, size_t content_size);
+void	ft_lstdelone(t_list **alst, void(*del)(void*, size_t));
+void	ft_lstadd(t_list **alst, t_list *new);
+void	ft_lstiter(t_list *lst, void(*f)(t_list *elem));
+int		ft_lstlen(t_list *lst);
 
 
 #endif
