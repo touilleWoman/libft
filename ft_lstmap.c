@@ -28,11 +28,11 @@ t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 		next = ptr->next;
 		ptr = (*f)(ptr);
 		ptr->next = next;
-		if (previous)
+		if (previous != NULL)
 		{
 			previous->next = ptr;
 		}
-		if (!ret)
+		if (ret == NULL)
 		{
 			ret = ptr;
 		}
