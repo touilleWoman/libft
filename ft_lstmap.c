@@ -15,13 +15,28 @@
 t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
 	t_list	*ret;
+	t_list	*previous;
+	t_list	*next;
 	t_list	*ptr;
 
-	ret = ft_lstcpy(lst);
-	ptr = ret;
+	ptr = ft_lstcpy(lst);
+	ret = NULL;
+	previous = NULL;
+	next = NULL;
 	while (ptr != NULL)
 	{
-		(*f)(ptr);
+		next = ptr->next;
+		ptr = (*f)(ptr);
+		ptr->next = next;
+		if (previous)
+		{
+			previous->next = ptr;
+		}
+		if (!ret)
+		{
+			ret = ptr;
+		}
+		previous = ptr;
 		ptr = ptr->next;
 	}
 	return (ret);
