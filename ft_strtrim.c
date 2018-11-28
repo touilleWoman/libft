@@ -14,7 +14,7 @@
 
 static int		isspace(char c)
 {
-	return (c == ' ') || (c == '\n') || (c == '\t');
+	return ((c == ' ') || (c == '\n') || (c == '\t'));
 }
 
 static int		tell_start(char const *s)

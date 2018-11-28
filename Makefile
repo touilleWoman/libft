@@ -1,3 +1,6 @@
+CC = gcc
+CFLAGS = -Wall -Werror -Wextra
+
 .PHONY: all clean fclean re
 
 SOURCE = ft_memset.c \
@@ -71,8 +74,8 @@ all: $(NAME)
 $(NAME): $(OFILE)
 	ar rcs $(NAME) $(OFILE)
 
-%.o: %c $(HEADER)
-	gcc -Wall -Werror -Wextra -c $(SOURCE) -I.
+%.o: %.c $(HEADER)
+	$(CC) -o $@ -c $< $(CFLAGS)
 
 clean:
 	rm -f $(OFILE)
@@ -80,4 +83,4 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
-re:fclean all
+re: fclean all

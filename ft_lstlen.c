@@ -15,11 +15,14 @@
 int		ft_lstlen(t_list *lst)
 {
 	int		count;
+	t_list	*ptr;
 
 	count = 0;
-	while (lst != NULL)
+	ptr = ft_lstcpy(lst);
+	while (ptr != NULL)
 	{
-		lst = lst->next;
+		ptr = ptr->next;
 		count++;
 	}
+	return (count);
 }
