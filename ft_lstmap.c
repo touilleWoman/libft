@@ -29,9 +29,7 @@ t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 		ptr = (*f)(ptr);
 		ptr->next = next;
 		if (previous != NULL)
-		{
 			previous->next = ptr;
-		}
 		if (ret == NULL)
 		{
 			ret = ptr;
@@ -41,4 +39,3 @@ t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 	}
 	return (ret);
 }
-

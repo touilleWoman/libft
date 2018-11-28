@@ -14,15 +14,24 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	char	*ptr;
 	size_t	i;
 
 	i = 0;
-	ptr = (char*)malloc(len * sizeof(char));
-	if (ptr == 0)
-		return (0);
-	ft_memcpy(ptr, src, len);
-	ft_memcpy(dst, ptr, len);
-	free(ptr);
+	if ((src < dst) && (len > 0))
+	{
+		while (len > 0)
+		{
+			((char*)dst)[len - 1] = ((char*)src)[len - 1];
+			len--;
+		}
+	}
+	if (((char*)src) >= ((char*)dst))
+	{
+		while (i < len)
+		{
+			((char*)dst)[i] = ((char*)src)[i];
+			i++;
+		}
+	}
 	return (dst);
 }
