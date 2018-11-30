@@ -28,7 +28,7 @@ static	char	*to_zero(char *s, char c)
 	return (s);
 }
 
-char			**fill_array(char const *s, char *s1, char **pptr)
+static char		**fill_array(char const *s, char *s1, char **pptr)
 {
 	size_t	y;
 	size_t	x;
