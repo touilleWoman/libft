@@ -25,7 +25,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 			len--;
 		}
 	}
-	if (((char*)src) >= ((char*)dst))
+	if (src >= dst)
 	{
 		while (i < len)
 		{

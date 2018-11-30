@@ -12,94 +12,63 @@
 
 #include "libft.h"
 
-static int		tell_num_of_str(char const *s, char c)
-{
-	int		i;
-	int		num_str;
-
-	i = 0;
-	num_str = 0;
-	while (s[i] != 0)
-	{
-		if ((s[i] != c) && (s[i] != 0))
-		{
-			while ((s[i] != c) && (s[i] != 0))
-			{
-				i++;
-			}
-			num_str++;
-			i--;
-		}
-		i++;
-	}
-	return (num_str);
-}
-
-static int		start(char const *s, char c, int index)
-{
-	while (s[index] != 0)
-	{
-		if (s[index] != c)
-		{
-			return (index);
-		}
-		index++;
-	}
-	return (0);
-}
-
-static int		sub_str_len(char const *s, char c, int start_point)
-{
-	int		len;
-
-	len = 0;
-	while ((s[start_point] != c) && s[start_point] != '\0')
-	{
-		len++;
-		start_point++;
-	}
-	return (len);
-}
-
-static int		inner_loop(char *ptr, char const *s, int len, int start_point)
+static	char	*to_zero(char *s, char c)
 {
 	int		x;
 
 	x = 0;
-	while (x < len)
+	while (s[x])
 	{
-		ptr[x] = s[start_point];
+		if (s[x] == c)
+		{
+			s[x] = '\0';
+		}
 		x++;
-		start_point++;
 	}
-	ptr[x] = '\0';
-	return (start_point);
+	return (s);
+}
+
+char			**fill_array(char const *s, char *s1, char **pptr)
+{
+	size_t	y;
+	size_t	x;
+
+	y = 0;
+	x = 0;
+	while (x < ft_strlen(s))
+	{
+		while (s1[x]!= '\0')
+		{
+			pptr[y] = (char*)malloc(sizeof(char) * (ft_strlen(s1 + x) + 1));
+			if (!pptr[y])
+				return (0);
+			ft_strcpy(pptr[y], s1 + x);
+			y++;
+			x = x + ft_strlen (s1 + x);
+		}
+		x++;
+	}
+	pptr[y] = 0;
+	return (pptr);
 }
 
 char			**ft_strsplit(char const *s, char c)
 {
 	char	**pptr;
-	int		num_str;
-	int		y;
-	int		len;
-	int		start_point;
+	int		word_nbr;
+	char	*s1;
 
 	if (!s)
 		return (0);
-	num_str = tell_num_of_str(s, c);
-	pptr = (char**)malloc(sizeof(char*) * (num_str + 1));
+	word_nbr = ft_word_nbr_counter(s, c);
+	s1 = (char*)malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (!s1)
+		return (0);
+	s1 = to_zero(ft_strcpy(s1, s), c);
+	pptr = (char**)malloc(sizeof(char*) * (word_nbr + 1));
 	if (pptr == 0)
 		return (0);
-	y = 0;
-	start_point = 0;
-	while (y < num_str)
-	{
-		start_point = start(s, c, start_point);
-		len = sub_str_len(s, c, start_point);
-		pptr[y] = (char*)malloc(sizeof(char) * (len + 1));
-		start_point = inner_loop(pptr[y], s, len, start_point);
-		y++;
-	}
-	pptr[y] = 0;
+	pptr = fill_array(s, s1, pptr);
+	free(s1);
 	return (pptr);
 }
