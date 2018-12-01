@@ -6,7 +6,7 @@
 /*   By: jleblond <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 14:33:12 by jleblond          #+#    #+#             */
-/*   Updated: 2018/11/26 14:33:14 by jleblond         ###   ########.fr       */
+/*   Updated: 2018/12/01 08:23:03 by jleblond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,5 @@ t_list			*ft_lstcpy(t_list *lst);
 int				ft_word_nbr_counter(char const *s, char c);
 int				ft_islower(int c);
 int				ft_isupper(int c);
-
 
 #endif

@@ -37,14 +37,14 @@ static char		**fill_array(char const *s, char *s1, char **pptr)
 	x = 0;
 	while (x < ft_strlen(s))
 	{
-		while (s1[x]!= '\0')
+		while (s1[x] != '\0')
 		{
 			pptr[y] = (char*)malloc(sizeof(char) * (ft_strlen(s1 + x) + 1));
 			if (!pptr[y])
 				return (0);
 			ft_strcpy(pptr[y], s1 + x);
 			y++;
-			x = x + ft_strlen (s1 + x);
+			x = x + ft_strlen(s1 + x);
 		}
 		x++;
 	}
