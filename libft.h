@@ -16,7 +16,26 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
+# include <fcntl.h>
 
+# define BUFF_SIZE 40
+
+int				get_next_line(const int fd, char **line);
+
+typedef struct	s_fd_buf
+{
+	int			fd;
+	char		*end;
+}				t_fd_buf;
+
+typedef struct	s_color
+{
+	unsigned char	r;
+	unsigned char	g;
+	unsigned char	b;
+}				t_color;
+
+t_color			ft_color_val_calculate(int val_cl);
 void			*ft_memset(void	*str, int c, size_t len);
 void			ft_bzero(void *s, size_t n);
 void			*ft_memcpy(void *dst, const void *src, size_t n);
@@ -70,6 +89,7 @@ void			ft_putchar_fd(char c, int fd);
 void			ft_putstr_fd(char const *s, int fd);
 void			ft_putendl_fd(char const *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
+int				get_next_line(const int fd, char **line);
 
 typedef struct	s_list
 {
@@ -89,5 +109,11 @@ t_list			*ft_lstcpy(t_list *lst);
 int				ft_word_nbr_counter(char const *s, char c);
 int				ft_islower(int c);
 int				ft_isupper(int c);
+
+/*
+** convertir un tableux de string {"0", "5", "10"} vers un tableau de int
+** [0, 10, 5]
+*/
+int				*ft_aatoii(char **pptr);
 
 #endif

@@ -10,10 +10,11 @@
 #                                                                              #
 # **************************************************************************** #
 
-CC = gcc
-CFLAGS = -Wall -Werror -Wextra
-
 .PHONY: all clean fclean re
+
+CC = gcc
+
+CFLAGS = -Wall -Werror -Wextra
 
 SOURCE = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c \
 ft_memchr.c ft_memcmp.c ft_strlen.c ft_strdup.c ft_strcpy.c \
@@ -27,7 +28,7 @@ ft_itoa.c ft_putchar.c ft_putstr.c ft_putendl.c ft_putnbr.c ft_putchar_fd.c \
 ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_lstnew.c ft_lstdelone.c \
 ft_lstdel.c ft_lstadd.c ft_lstiter.c ft_lstmap.c ft_lstcpy.c \
 ft_word_nbr_counter.c ft_lstlen.c ft_islower.c ft_isupper.c \
-get_next_line.c \
+get_next_line.c ft_aatoii.c ft_color_val_calculate.c \
 
 HEADER = libft.h
 
@@ -41,7 +42,7 @@ $(NAME): $(OFILE)
 	ar rcs $(NAME) $(OFILE)
 
 %.o: %.c $(HEADER)
-	$(CC) -o $@ -c $< $(CFLAGS)
+	$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:
 	rm -f $(OFILE)
