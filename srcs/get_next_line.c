@@ -94,7 +94,7 @@ char			**get_pend(int fd)
 	p = ft_lstnew(&data, sizeof(data));
 	if (p == NULL)
 		return (0);
-	ft_lstadd(&elems, p);
+	ft_lstadd_top(&elems, p);
 	return (&((t_fd_buf*)elems->content)->end);
 }
 

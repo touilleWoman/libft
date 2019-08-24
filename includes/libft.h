@@ -35,6 +35,8 @@ typedef struct	s_color
 	unsigned char	b;
 }				t_color;
 
+
+
 t_color			ft_color_val_calculate(int val_cl);
 void			*ft_memset(void	*str, int c, size_t len);
 void			ft_bzero(void *s, size_t n);
@@ -80,7 +82,6 @@ char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_strtrim(char const *s);
 char			*ft_strdup(char const *src);
 char			**ft_strsplit(char const *s, char c);
-char			*ft_itoa(int n);
 void			ft_putchar(char c);
 void			ft_putstr(char const *s);
 void			ft_putendl(char const *s);
@@ -89,6 +90,7 @@ void			ft_putchar_fd(char c, int fd);
 void			ft_putstr_fd(char const *s, int fd);
 void			ft_putendl_fd(char const *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
+char			*ft_itoa(long long x);
 int				get_next_line(const int fd, char **line);
 
 typedef struct	s_list
@@ -101,7 +103,8 @@ typedef struct	s_list
 t_list			*ft_lstnew(void const *content, size_t content_size);
 void			ft_lstdelone(t_list **alst, void(*del)(void*, size_t));
 void			ft_lstdel(t_list **alst, void (*del)(void*, size_t));
-void			ft_lstadd(t_list **alst, t_list *new);
+void			ft_lstadd_top(t_list **alst, t_list *new);
+void			ft_lstadd_bot(t_list **alst, t_list *new);
 void			ft_lstiter(t_list *lst, void(*f)(t_list *elem));
 t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 int				ft_lstlen(t_list *lst);
@@ -115,5 +118,6 @@ int				ft_isupper(int c);
 ** [0, 10, 5]
 */
 int				*ft_aatoii(char **pptr);
+int				ft_printf(const char *restrict format, ...);
 
 #endif
