@@ -20,13 +20,6 @@
 
 # define BUFF_SIZE 40
 
-int				get_next_line(const int fd, char **line);
-
-typedef struct	s_fd_buf
-{
-	int			fd;
-	char		*end;
-}				t_fd_buf;
 
 typedef struct	s_color
 {
@@ -91,7 +84,6 @@ void			ft_putstr_fd(char const *s, int fd);
 void			ft_putendl_fd(char const *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
 char			*ft_itoa(long long x);
-int				get_next_line(const int fd, char **line);
 
 typedef struct	s_list
 {
@@ -118,6 +110,7 @@ int				ft_isupper(int c);
 ** [0, 10, 5]
 */
 int				*ft_aatoii(char **pptr);
+int				get_next_line(const int fd, char **line);
 int				ft_printf(const char *restrict format, ...);
 
 #endif

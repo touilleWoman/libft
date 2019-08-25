@@ -20,12 +20,12 @@
 
 # define BUFF_SIZE 40
 
-int				get_next_line(const int fd, char **line);
-
 typedef struct	s_fd_buf
 {
 	int			fd;
 	char		*end;
 }				t_fd_buf;
+
+
 
 #endif

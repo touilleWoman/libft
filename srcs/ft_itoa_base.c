@@ -56,13 +56,13 @@ char			*ft_itoa_base(int x, int base)
 		nbr = -nbr;
 		neg = 1;
 	}
-	len = lenth(nbr);
+	len = lenth(nbr, base);
 	ptr = (char*)malloc(sizeof(char) * (len + 1));
 	if (ptr == 0)
 		return (NULL);
 
-	ptr = convert(nbr, len, ptr);
+	ptr = convert(nbr, len, ptr, base);
 	if (neg == 1)
 		ptr[0] = '-';
-	returnbr (ptr);
+	return (ptr);
 }
