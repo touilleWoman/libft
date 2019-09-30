@@ -13,9 +13,7 @@
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include <stdio.h>
 # include <stdarg.h>
-# include <unistd.h>
 # include "pf_unit.h"
 # include "libft.h"
 # include <wchar.h>
@@ -23,7 +21,6 @@
 # define PRINT_FUNS_NB 9
 # define ERROR -1
 # define STD_OUT 1
-
 
 typedef struct	s_parse_funs
 {

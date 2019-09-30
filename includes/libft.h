@@ -18,17 +18,12 @@
 # include <string.h>
 # include <fcntl.h>
 
-# define BUFF_SIZE 40
-
-
 typedef struct	s_color
 {
 	unsigned char	r;
 	unsigned char	g;
 	unsigned char	b;
 }				t_color;
-
-
 
 t_color			ft_color_val_calculate(int val_cl);
 void			*ft_memset(void	*str, int c, size_t len);
@@ -106,7 +101,7 @@ int				ft_islower(int c);
 int				ft_isupper(int c);
 
 /*
-** convertir un tableux de string {"0", "5", "10"} vers un tableau de int
+** ft_aatoii : convertir un tableux de string {"0", "5", "10"} vers un tableau de int
 ** [0, 10, 5]
 */
 int				*ft_aatoii(char **pptr);
