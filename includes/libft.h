@@ -18,6 +18,12 @@
 # include <string.h>
 # include <fcntl.h>
 
+typedef enum	e_bool
+{
+	TRUE = 1,
+	FALSE = 0,
+}				t_bool;
+
 typedef struct	s_color
 {
 	unsigned char	r;
@@ -101,8 +107,8 @@ int				ft_islower(int c);
 int				ft_isupper(int c);
 
 /*
-** ft_aatoii : convertir un tableux de string {"0", "5", "10"} vers un tableau de int
-** [0, 10, 5]
+** ft_aatoii : convertir un tableux de string {"0", "5", "10"} vers un
+** tableau de int [0, 10, 5]
 */
 int				*ft_aatoii(char **pptr);
 int				get_next_line(const int fd, char **line);

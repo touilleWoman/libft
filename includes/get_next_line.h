@@ -26,6 +26,4 @@ typedef struct	s_fd_buf
 	char		*end;
 }				t_fd_buf;
 
-
-
 #endif
