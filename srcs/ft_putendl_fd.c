@@ -14,8 +14,6 @@
 
 void	ft_putendl_fd(char const *s, int fd)
 {
-	int		i;
-
 	if (s != 0)
 	{
 		write(fd, s, ft_strlen(s));
