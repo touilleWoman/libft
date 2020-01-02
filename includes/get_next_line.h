@@ -13,17 +13,11 @@
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <fcntl.h>
 # include "libft.h"
 
 # define BUFF_SIZE 40
-
-typedef struct	s_fd_buf
-{
-	int			fd;
-	char		*end;
-}				t_fd_buf;
+# define ERROR -1
+# define SUCCESS 1
+# define FINISHED 0
 
 #endif

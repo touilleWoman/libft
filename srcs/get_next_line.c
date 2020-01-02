@@ -6,122 +6,74 @@
 /*   By: jleblond <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/18 14:43:47 by jleblond          #+#    #+#             */
-/*   Updated: 2018/12/18 14:43:49 by jleblond         ###   ########.fr       */
+/*   Updated: 2020/01/02 20:44:50 by jleblond         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-ssize_t			read_and_stock(const int fd, char **end)
+static int		buf_to_line(char **line, char const buf[BUFF_SIZE], size_t n)
 {
-	ssize_t			ret;
-	char			buf[BUFF_SIZE + 1];
-	char			*temp;
+	char			str[n + 1];
+	char			*tmp;
 
-	temp = NULL;
-	ret = read(fd, buf, BUFF_SIZE);
-	if ((ret == -1) || (ret == 0))
-		return (ret);
-	buf[ret] = 0;
-	if (*end == NULL)
-	{
-		if ((*end = ft_strdup(buf)) == NULL)
-			return (-1);
-	}
+	ft_strncpy(str, buf, n);
+	str[n] = '\0';
+	if (*line == NULL)
+		*line = ft_strdup(str);
 	else
 	{
-		if ((temp = ft_strjoin(*end, buf)) == NULL)
-			return (-1);
-		free(*end);
-		*end = temp;
+		tmp = ft_strjoin(*line, str);
+		if (tmp == NULL)
+			return (ERROR);
+		free(*line);
+		*line = tmp;
 	}
-	return (ret);
-}
-
-char			*copy_line(const char *str)
-{
-	size_t			x;
-	char			*stock;
-
-	x = 0;
-	while ((str[x] != 0) && (str[x] != '\n'))
-	{
-		x++;
-	}
-	stock = (char*)malloc(sizeof(char) * (x + 2));
-	if (stock == NULL)
-		return (0);
-	x = 0;
-	while ((str[x] != 0) && (str[x] != '\n'))
-	{
-		stock[x] = str[x];
-		x++;
-	}
-	stock[x] = '\0';
-	return (stock);
-}
-
-int				renew_end(char **line, char **end)
-{
-	char			*temp;
-
-	*line = copy_line(*end);
 	if (*line == NULL)
-		return (-1);
-	temp = ft_strdup(ft_strchr(*end, '\n') + 1);
-	if (temp == NULL)
-		return (-1);
-	free(*end);
-	*end = temp;
-	return (1);
+		return (ERROR);
+	return (SUCCESS);
 }
 
-char			**get_pend(int fd)
+static int		renew_buf(char **line, char buf[BUFF_SIZE], int *n_not_found)
 {
-	static t_list	*elems = NULL;
-	t_list			*p;
-	t_fd_buf		data;
+	size_t			n;
 
-	p = elems;
-	while (p)
-	{
-		if (((t_fd_buf*)p->content)->fd == fd)
-			return (&((t_fd_buf*)p->content)->end);
-		p = p->next;
-	}
-	data.fd = fd;
-	data.end = NULL;
-	p = ft_lstnew(&data, sizeof(data));
-	if (p == NULL)
-		return (0);
-	ft_lstadd_top(&elems, p);
-	return (&((t_fd_buf*)elems->content)->end);
+	n = 0;
+	while ((buf[n] != 0) && (buf[n] != '\n'))
+		n++;
+	if (buf_to_line(line, buf, n) == ERROR)
+		return (ERROR);
+	if (buf[n] == '\n')
+		*n_not_found = FALSE;
+	ft_memmove(buf, buf + n + 1, BUFF_SIZE - n);
+	ft_memset(buf + BUFF_SIZE - n, '\0', n);
+	return (SUCCESS);
 }
 
 int				get_next_line(const int fd, char **line)
 {
-	int				ret;
-	char			**end;
+	int				readret;
+	static char		buf[BUFF_SIZE] = "\0";
+	int				n_not_found;
 
-	if (BUFF_SIZE < 1 || line == 0 || fd < 0 || (!(end = get_pend(fd))))
-		return (-1);
-	while ((*end == NULL) || (ft_strchr(*end, '\n') == NULL))
+	if (BUFF_SIZE < 1 || line == NULL || fd < 0)
+		return (ERROR);
+	*line = NULL;
+	n_not_found = TRUE;
+	while (n_not_found)
 	{
-		ret = read_and_stock(fd, end);
-		if ((ret == -1) || ((ret == 0) && (*end == NULL)))
-			return (ret);
-		if (ret == 0)
+		if (buf[0] == '\0')
 		{
-			if ((*end)[0] == '\0')
-			{
-				free(*end);
-				*end = NULL;
-				return (0);
-			}
-			*line = *end;
-			*end = NULL;
-			return (1);
+			readret = read(fd, buf, BUFF_SIZE);
+			if (readret == ERROR)
+				return (ERROR);
+			else if (readret == 0 && *line == NULL)
+				return (FINISHED);
+			else if (readret == 0)
+				return (SUCCESS);
 		}
+		if (renew_buf(line, buf, &n_not_found) == ERROR)
+			return (ERROR);
 	}
-	return (renew_end(line, end));
+	return (SUCCESS);
 }
